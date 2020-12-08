@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AdventOfCode
+namespace AdventOfCode.Day_4
 {
     public static class DayFour
     {

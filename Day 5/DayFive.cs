@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AdventOfCode
+namespace AdventOfCode.Day_5
 {
     public static class DayFive
     {
@@ -15,8 +15,6 @@ namespace AdventOfCode
             double maxSeat = 7.0;
 
             int indexer = 0;
-            int row = 0;
-            int seat = 0;
             int highestSeatId = 0;
 
             foreach (string line in lines)
@@ -33,6 +31,8 @@ namespace AdventOfCode
 
                     indexer++;
                 }
+
+                int row;
 
                 if (line[indexer] == 'F')
                 {
@@ -57,6 +57,8 @@ namespace AdventOfCode
 
                     indexer++;
                 }
+
+                int seat;
 
                 if (line[indexer] == 'L')
                 {
