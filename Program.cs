@@ -4,6 +4,7 @@ using AdventOfCode.Day_3;
 using AdventOfCode.Day_4;
 using AdventOfCode.Day_5;
 using AdventOfCode.Day_6;
+using AdventOfCode.Day_7;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,10 @@ namespace AdventOfCode
             //DayFive.PartTwo(GetPuzzleByDayAsStringArray("Day 5"));
 
             //DaySix.PartOne(GetPuzzleByDayAsStringArray("Day 6"));
-            DaySix.PartTwo(GetPuzzleByDayAsStringArray("Day 6"));
+            //DaySix.PartTwo(GetPuzzleByDayAsStringArray("Day 6"));
+
+            DaySeven.PartOne(GetPuzzleByDayAsStringArray("Day 7"));
+            //DaySeven.PartTwo(GetPuzzleByDayAsStringArray("Day 7"));
         }
 
         static string[] GetPuzzleByDayAsStringArray(string day)

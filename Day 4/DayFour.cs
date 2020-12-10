@@ -64,8 +64,8 @@ namespace AdventOfCode.Day_4
             int totalPassports = 0;
             int howManyValidPassports = 0;
 
-            List<Dictionary<string, string>> passports = new List<Dictionary<string, string>>();
-            Dictionary<string, string> passport = new Dictionary<string, string>();
+            var passports = new List<Dictionary<string, string>>();
+            var passport = new Dictionary<string, string>();
 
             foreach (string line in lines)
             {

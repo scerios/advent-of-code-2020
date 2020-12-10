@@ -9,7 +9,7 @@ namespace AdventOfCode.Day_6
     {
         public static void PartOne(string[] lines)
         {
-            List<char> charsOfGroup = new List<char>();
+            var charsOfGroup = new List<char>();
             int yesCount = 0;
 
             foreach (string line in lines)
@@ -34,8 +34,8 @@ namespace AdventOfCode.Day_6
 
         public static void PartTwo(string[] lines)
         {
-            List<List<char>> charsOfGroup = new List<List<char>>();
-            List<char> charsOfPerson = new List<char>();
+            var charsOfGroup = new List<List<char>>();
+            var charsOfPerson = new List<char>();
             int yesCount = 0;
             int personCount = 0;
 

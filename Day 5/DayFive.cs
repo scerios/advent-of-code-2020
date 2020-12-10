@@ -98,7 +98,7 @@ namespace AdventOfCode.Day_5
             int row = 0;
             int seat = 0;
             int mySeatId = 0;
-            List<int> seatIds = new List<int>();
+            var seatIds = new List<int>();
 
             foreach (string line in lines)
             {
