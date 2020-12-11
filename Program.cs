@@ -33,13 +33,18 @@ namespace AdventOfCode
             //DaySix.PartOne(GetPuzzleByDayAsStringArray("Day 6"));
             //DaySix.PartTwo(GetPuzzleByDayAsStringArray("Day 6"));
 
-            DaySeven.PartOne(GetPuzzleByDayAsStringArray("Day 7"));
-            //DaySeven.PartTwo(GetPuzzleByDayAsStringArray("Day 7"));
+            //DaySeven.PartOne(GetPuzzleByDayAsStringArray("Day 7"));
+            DaySeven.PartTwo(GetPuzzleByDayAsString("Day 7"));
         }
 
         static string[] GetPuzzleByDayAsStringArray(string day)
         {
             return System.IO.File.ReadAllLines(@$"D:\Coding\C#\AdventOfCode\{ day }\puzzle.txt");
+        }
+
+        static string GetPuzzleByDayAsString(string day)
+        {
+            return System.IO.File.ReadAllText(@$"D:\Coding\C#\AdventOfCode\{ day }\puzzle.txt");
         }
     }
 }
