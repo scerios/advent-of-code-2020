@@ -7,42 +7,135 @@ namespace AdventOfCode.Day_8
 {
     public static class DayEight
     {
+        public static int Accumulator { get; set; }
+        public static int CommandIndex { get; set; }
+        public static int OccurenceCount { get; set; }
+        public static int ChangeCount { get; set; }
+        public static List<Command> Commands { get; set; }
+        public static Command CurrentCommand { get; set; }
+
         public static void PartOne(string text)
         {
-            int accumulator = 0;
-            int commandIndex = 0;
-            var commands = ParseInput(text);
-            var currentCommand = commands[commandIndex];
+            Accumulator = 0;
+            CommandIndex = 0;
+            Commands = ParseInput(text);
+            CurrentCommand = Commands[CommandIndex];
             
-            while (!currentCommand.HasRun)
+            while (!CurrentCommand.HasRun)
             {
-                currentCommand.HasRun = true;
+                CurrentCommand.HasRun = true;
 
-                if (currentCommand.Name == "nop")
+                if (CurrentCommand.Name == "nop")
                 {
-                    commandIndex++;
-                    currentCommand = commands[commandIndex];
+                    CommandIndex++;
+                    CurrentCommand = Commands[CommandIndex];
                     continue;
                 }
 
-                if (currentCommand.Name == "acc")
+                if (CurrentCommand.Name == "acc")
                 {
-                    accumulator += currentCommand.Value;
-                    commandIndex++;
-                    currentCommand = commands[commandIndex];
+                    Accumulator += CurrentCommand.Value;
+                    CommandIndex++;
+                    CurrentCommand = Commands[CommandIndex];
                     continue;
                 }
                 
-                if (currentCommand.Name == "jmp")
+                if (CurrentCommand.Name == "jmp")
                 {
-                    commandIndex += currentCommand.Value;
-                    currentCommand = commands[commandIndex];
+                    CommandIndex += CurrentCommand.Value;
+                    CurrentCommand = Commands[CommandIndex];
                     continue;
                 }
 
             }
 
-            Console.WriteLine(accumulator);
+            Console.WriteLine(Accumulator);
+        }
+
+        public static void PartTwo(string text)
+        {
+            Accumulator = 0;
+            CommandIndex = 0;
+            ChangeCount = 1;
+            OccurenceCount = 0;
+            Commands = ParseInput(text);
+            CurrentCommand = Commands[CommandIndex];
+
+            while (true)
+            {
+                if (CurrentCommand.HasRun)
+                {
+                    Reset();
+                    continue;
+                }
+
+                if (CommandIndex == Commands.Count)
+                {
+                    break;
+                }
+
+                CurrentCommand.HasRun = true;
+
+                if (CurrentCommand.Name == "nop")
+                {
+                    OccurenceCount++;
+
+                    if (OccurenceCount == ChangeCount)
+                    {
+                        CommandIndex += CurrentCommand.Value;
+                        if (CommandIndex < 0 || CommandIndex > Commands.Count)
+                        {
+                            Reset();
+                            continue;
+                        }
+                        CurrentCommand = Commands[CommandIndex];
+                    }
+                    else
+                    {
+                        Jump();
+                    }
+
+                    continue;
+                }
+
+                if (CurrentCommand.Name == "acc")
+                {
+                    Accumulator += CurrentCommand.Value;
+                    CommandIndex++;
+                    CurrentCommand = Commands[CommandIndex];
+                    continue;
+                }
+
+                if (CurrentCommand.Name == "jmp")
+                {
+                    OccurenceCount++;
+
+                    if (OccurenceCount == ChangeCount)
+                    {
+                        Jump();
+                    }
+                    else
+                    {
+                        CommandIndex += CurrentCommand.Value;
+                        if (CommandIndex < 0 || CommandIndex > Commands.Count)
+                        {
+                            Reset();
+                            continue;
+                        }
+
+                        if (CommandIndex == Commands.Count)
+                        {
+                            break;
+                        }
+
+                        CurrentCommand = Commands[CommandIndex];
+                    }
+
+                    continue;
+                }
+            }
+
+            Console.WriteLine(Accumulator);
         }
 
         private static List<Command> ParseInput(string text)
@@ -57,6 +150,22 @@ namespace AdventOfCode.Day_8
             var parts = line.Split(' ');
 
             return new Command(parts[0], Int32.Parse(parts[1]));
+        }
+
+        private static void Reset()
+        {
+            Accumulator = 0;
+            CommandIndex = 0;
+            OccurenceCount = 0;
+            ChangeCount++;
+            Commands.ForEach(command => command.HasRun = false);
+            CurrentCommand = Commands[CommandIndex];
+        }
+
+        private static void Jump()
+        {
+            CommandIndex++;
+            CurrentCommand = Commands[CommandIndex];
         }
     }
 }
