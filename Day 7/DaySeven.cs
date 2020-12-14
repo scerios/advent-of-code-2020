@@ -60,7 +60,7 @@ namespace AdventOfCode.Day_7
             Console.WriteLine(Solve(ParseInput(text)));
         }
 
-        public static Dictionary<string, Node<Bag>> ParseInput(string text)
+        private static Dictionary<string, Node<Bag>> ParseInput(string text)
             => text
                 .Split(Environment.NewLine)
                 .Where(line => line.Length > 0)
