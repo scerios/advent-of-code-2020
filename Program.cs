@@ -45,8 +45,8 @@ namespace AdventOfCode
             //DayNine.PartOne(GetPuzzleByDayAsString("Day 9"));
             //DayNine.PartTwo(GetPuzzleByDayAsString("Day 9"));
 
-            DayTen.PartOne(GetPuzzleByDayAsString("Day 10"));
-            //DayTen.PartTwo(GetPuzzleByDayAsString("Day 10"));
+            //DayTen.PartOne(GetPuzzleByDayAsString("Day 10"));
+            DayTen.PartTwo(GetPuzzleByDayAsString("Day 10"));
         }
 
         static string[] GetPuzzleByDayAsStringArray(string day)
